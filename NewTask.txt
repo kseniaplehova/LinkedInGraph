@@ -1,0 +1,25 @@
+Логистика возвратов интернет‑магазина
+Суть: товары, клиенты, склады, причины возврата, пункты приёма.
+Узлы:
+
+Product (ID, наименование, категория, цена)
+
+Customer (ID, ФИО, город)
+
+Warehouse (ID, адрес, вместимость)
+
+ReturnReason (ID, описание – брак, не подошёл размер)
+
+PickupPoint (ID, адрес, партнёр)
+
+Рёбра:
+
+CustomerBuys (Customer → Product, дата заказа, дата возврата) – можно разделить, но можно хранить возврат как атрибут.
+
+ProductStoredAt (Product → Warehouse, количество)
+
+ReturnedDueTo (заказ → ReturnReason) – если ввести узел Order.
+
+PickupPointAcceptsReturn (PickupPoint → Product) – тип товаров, принимаемых в пункте.
+
+TransferBetween (Warehouse → Warehouse) – перемещение товаров между складами.
